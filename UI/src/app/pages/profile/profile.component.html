@@ -1,0 +1,36 @@
+<div class="profile-container" *ngIf="profile!=null">
+  <mat-card class="profile-card">
+    <div style="display: flex;justify-content: space-around;margin-top: 60px">
+      <div>
+        <mat-card-title><strong>{{profile.nom}} {{profile.prenom}}</strong></mat-card-title>
+        <mat-card-header style="display: flex;justify-content: center">
+          <div mat-card-avatar class="profile-image" [style.background-image]="'url(' + profileImageUrl + ')'"></div>
+        </mat-card-header>
+      </div>
+      <div>
+        <mat-card-content style="display: flex;justify-content: center">
+          <mat-list>
+            <div class="info">
+              <mat-list-item><strong>Nom</strong> : {{profile.nom}}</mat-list-item>
+            </div>
+            <div class="info">
+              <mat-list-item><strong>Prenom</strong> : {{profile.prenom}}</mat-list-item>
+            </div>
+            <div class="info">
+              <mat-list-item><strong>Email</strong> : {{profile.adresseMail}}</mat-list-item>
+            </div>
+            <div class="info">
+              <mat-list-item><strong>Adresse</strong> : {{profile.adresse}}</mat-list-item>
+            </div>
+          </mat-list>
+        </mat-card-content>
+      </div>
+      <div>
+        <mat-card-actions style="display: flex;justify-content: center">
+          <button mat-button class="btn" style="background-color: #62c2ea" (click)="openUpdateDialog()"><strong>Editer Profile</strong></button>
+          <button mat-button class="btn" style="background-color: #62c2ea;margin-left: 15px" (click)="openChangePasswordDialog()"><strong>Change le Mote passe</strong></button>
+        </mat-card-actions>
+      </div>
+    </div>
+  </mat-card>
+</div>

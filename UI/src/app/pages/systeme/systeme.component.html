@@ -1,0 +1,83 @@
+<mat-card style="margin: 60px 40px; padding: 40px" *ngIf="systeme!=null && zones!=null">
+  <div style="display: flex; justify-content: space-around">
+    <div class="partie1">
+      <div class="partie2">
+        <h1 style="text-align: start; margin: 30px 0px">Systeme 1</h1>
+        <div>
+          <div class="img">
+            <div style="display: flex; justify-content: space-between">
+              <h3 style="margin-left: 50px">{{systeme.nom}}</h3>
+              <div>
+                <mat-icon (click)="openUpdateDialog(systeme.id,systeme.jardinierId)" style="color: white; margin: 15px">create</mat-icon>
+                <mat-icon (click)="openConfirmDialog(systeme.id)" style="color: white; margin: 15px">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div class="div">
+            <div style="display: flex; justify-content: space-between">
+              <p><mat-icon>place</mat-icon> <span>{{systeme.adresse}}</span></p>
+              <p><mat-icon>query_builder</mat-icon> <span>{{systeme.currentTime}}</span></p>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <p><mat-icon>wb_sunny</mat-icon> <span>T: {{systeme.temperature}}°C</span></p>
+              <p><mat-icon>water_drop</mat-icon> <span>{{ systeme.humidity }}%</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="partie3">
+        <h3 style="text-align: start; margin: 50px">Ajouter par :<span>{{systeme.nomJardinier}} {{systeme.prenomJardinier}}</span></h3>
+      </div>
+    </div>
+    <div class="partie4">
+      <div class="zones" style="width: 700px">
+        <div *ngFor="let zone of zones">
+          <mat-card style="background-color: #62c2ea; padding: 10px ;width: 300px">
+            <h3>{{zone.nom}}</h3>
+            <button mat-icon-button color="primary" (click)="onChartClick(zone.nom)"
+                    style="display: flex;justify-content: end;margin-top: -70px">
+              <mat-icon color="primary">insert_chart</mat-icon>
+            </button>
+
+            <p>T sol : {{zone.sensorValue}} °C</p>
+            <p>Date : {{zone.timesTamp | date:'short'}}</p>
+            <mat-divider></mat-divider>
+            <div>
+              <label id="example-radio-group-label" style="text-align: start; padding: 10px; color: white">Mode</label>
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                style="display: flex;"
+                [(ngModel)]="zone.etat"
+                class="custom-radio"
+                (change)="onZoneEtatChange($event,zone.nom)">
+                <mat-radio-button [value]="true">Automatique</mat-radio-button>
+                <mat-radio-button [value]="false">Manuelle</mat-radio-button>
+              </mat-radio-group>
+
+            </div>
+            <section class="example-section" *ngIf="zone.etat==false">
+              <mat-slide-toggle class="example-margin" [(ngModel)]="zone.action" (change)="onToggleChange($event, zone.nom)">
+                Activer
+              </mat-slide-toggle>
+            </section>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex">
+    <div><app-courbes style="margin-top: 60px"></app-courbes></div>
+    <div *ngIf="zoneName"><mat-card style="margin: 10px;padding: 5px;height: 350px;width: 600px">
+      <apx-chart #chart
+                 [series]="chartOptions.series"
+                 [chart]="chartOptions.chart"
+                 [xaxis]="chartOptions.xaxis"
+                 [dataLabels]="chartOptions.dataLabels"
+                 [grid]="chartOptions.grid"
+                 [stroke]="chartOptions.stroke"
+                 [title]="chartOptions.title">
+      </apx-chart>
+    </mat-card></div>
+
+  </div>
+</mat-card>

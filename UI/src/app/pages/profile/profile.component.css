@@ -1,0 +1,57 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.profile-card {
+  width: 600px;
+  background-color: #d9d9d933;
+}
+
+.profile-image {
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  background-position: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: #62c2ea solid 2px;
+}
+.info{
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  width: 350px;
+  margin: 15px;
+}
+.btn{
+  border-radius: 5px;
+  border: #62c2ea solid 2px;
+}
+mat-list-item{
+  text-align: start;
+}
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.profile-card {
+  width: 100%;
+  margin-top: 4%;
+  height: 500px;
+  max-width: 1200px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+
+}

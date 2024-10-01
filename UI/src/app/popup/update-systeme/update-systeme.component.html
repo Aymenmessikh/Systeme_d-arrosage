@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Modifier un Système</h2>
+<mat-dialog-content>
+  <form [formGroup]="systemeForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom du Système</mat-label>
+      <input matInput type="text" [formControlName]="'nom'"/>
+<!--      <mat-error *ngIf="systemeForm.controls.nom.hasError('required')">Nom is required</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Adresse</mat-label>
+      <input matInput type="text" [formControlName]="'adresse'"/>
+<!--      <mat-error *ngIf="systemeForm.controls.adresse.hasError('required')">Adresse is required</mat-error>-->
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="display:flex;justify-content: end">
+  <button mat-button mat-dialog-close style="background-color: #62c2ea">Annuler</button>
+  <button mat-button style="background-color: #62c2ea" (click)="onYesClick()" [disabled]="systemeForm.invalid">Modifier</button>
+</mat-dialog-actions>

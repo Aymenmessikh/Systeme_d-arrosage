@@ -1,0 +1,43 @@
+.img{
+  background-image: url("/assets/img_2.png");
+  width: 350px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  padding: 10px;
+  background-repeat: no-repeat;
+  border-radius: 8px 8px 0px 0px;
+  color: white;
+}
+.div{
+  background-color: #A5CB57;
+  height: 90px;
+  padding: 10px;
+  width: 350px;
+  margin-top: -23px;
+  border-radius: 0px 0px 8px 8px;
+  color: white;
+}
+p{
+  margin: 10px 15px;
+  text-align: start;
+}
+h3{
+  text-align: center;
+}
+span{
+  color: black;
+}
+mat-icon{
+  color: black;
+}
+.zones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.grid-item {
+  display: flex;
+  justify-content: center;
+}
+

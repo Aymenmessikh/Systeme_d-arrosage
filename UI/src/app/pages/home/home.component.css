@@ -1,0 +1,78 @@
+.img {
+  background-image: url("/assets/img_2.png");
+  height: 92vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center; /* Centrage vertical */
+  justify-content: flex-start; /* Alignement à gauche */
+  position: relative; /* Nécessaire pour positionner le triangle à l'intérieur de .img */
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center; /* Centrage vertical de .content */
+  height: 100%;
+}
+
+h3 {
+  font-size: 30px;
+  color: white;
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+p {
+  font-size: 18px;
+  color: #62c2ea;
+  text-align: start;
+}
+
+.content {
+  width: 756px;
+  background: rgba(0, 0, 0, 0.34);
+  height: 283px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transform: translateX(-100%);
+  animation: slideIn 2s forwards;
+}
+
+.logo {
+  height: 184px;
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 136px;
+}
+
+.img1 {
+  height: 104px;
+  width: 80px;
+  margin-right: 130px;
+  margin-top: 110px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 250px solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 250px solid #FFFFFF40;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: rotate(0deg);
+  display: flex;
+  justify-content: center;
+}
+
+/* Animation pour faire glisser le .content */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%); /* Départ hors écran à gauche */
+  }
+  to {
+    transform: translateX(0); /* Position finale */
+  }
+}

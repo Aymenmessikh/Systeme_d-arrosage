@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Modifier le Profil </h2>
+<mat-dialog-content >
+  <form [formGroup]="updateForm">
+    <div>
+      <mat-form-field appearance="outline" >
+        <mat-label>Nom</mat-label>
+        <input matInput type="text" [formControlName]="'nom'"/>
+        <mat-error *ngIf="updateForm.controls.nom.hasError('required')">Le nom ne doit pas être vide.</mat-error>
+      </mat-form-field >
+      <mat-form-field appearance="outline">
+        <mat-label>Prenom</mat-label>
+        <input matInput type="text" [formControlName]="'prenom'"/>
+        <mat-error *ngIf="updateForm.controls.prenom.hasError('required')">Le prenom ne doit pas être vide.</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Adress</mat-label>
+        <input matInput type="text" [formControlName]="'adresse'"/>
+        <mat-error *ngIf="updateForm.controls.adresse.hasError('required')">L'adress ne doit pas être vide.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [formControlName]="'email'"/>
+        <mat-error *ngIf="updateForm.controls.email.hasError('required')">Email ne doit pas être vide.</mat-error>
+        <mat-error *ngIf="updateForm.controls.email.hasError('email')">Veuillez entrer une adresse email valide.</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="display:flex;justify-content: end">
+  <button mat-button mat-dialog-close style="background-color: #62c2ea">Annuler</button>
+  <button mat-button style="background-color: #62c2ea" (click)="onYesClick()" [disabled]="updateForm.invalid">Modifier</button>
+</mat-dialog-actions>

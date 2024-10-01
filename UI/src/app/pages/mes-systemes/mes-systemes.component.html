@@ -1,0 +1,31 @@
+<div style="margin: 10px 30px ;padding: 10px" *ngIf="systemes!=null">
+  <div style="display: flex; justify-content: space-between">
+    <div><h1>Mes Systemes</h1></div>
+    <div><button (click)="openDialog()" style="background-color: #62c2ea;margin-top: 20px;" mat-button>Ajouter Un Systeme</button></div>
+  </div>
+
+  <mat-card style="margin: 10px; padding: 20px" class="grid-container">
+    <div *ngFor="let systeme of systemes" class="grid-item">
+      <mat-card style="padding: 10px;">
+        <div (click)="sendId(systeme.id)">
+          <div class="img">
+            <div style="display: flex; justify-content: space-between">
+              <h3 style="margin-left: 15px">{{ systeme.nom }}</h3>
+            </div>
+          </div>
+          <div class="div">
+            <div style="display: flex; justify-content: space-between">
+              <p><mat-icon>place</mat-icon> <span>{{ systeme.adresse }}</span></p>
+              <p><mat-icon>query_builder</mat-icon> <span>{{systeme.currentTime}}</span></p>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <p><mat-icon>wb_sunny</mat-icon> <span>T: {{ systeme.temperature }}°C</span></p>
+              <p><mat-icon>water_drop</mat-icon> <span>{{ systeme.humidity }}%</span></p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card>
+
+</div>

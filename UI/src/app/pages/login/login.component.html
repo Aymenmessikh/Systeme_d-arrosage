@@ -1,0 +1,27 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+    <div class="header">
+      <div class="circle-left"></div>
+      <img src="assets/img_4.png" alt="Logo" class="logo">
+      <div class="circle-right"></div>
+    </div>
+    <h1>Bienvenue</h1>
+    <p>Connectez-vous à votre compte</p>
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [formControlName]="'email'" name="email" placeholder="example@gmail.com" required>
+        <mat-error *ngIf="loginForm.controls.email.hasError('required')">L'email ne doit pas être vide.</mat-error>
+        <mat-error *ngIf="loginForm.controls.email.hasError('email')">Veuillez entrer une adresse email valide.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControlName]="'password'" name="password" placeholder="password123" required [minLength]="8">
+        <mat-error *ngIf="loginForm.controls.password.hasError('required')">Le mot de passe ne doit pas être vide.</mat-error>
+        <mat-error *ngIf="loginForm.controls.password.hasError('minlength')">Le mot de passe doit comporter au moins 8 caractères.</mat-error>
+      </mat-form-field>
+      <mat-error style="margin-bottom: 20px" *ngIf="failde">Une erreur s'est produite, veuillez réessayer.</mat-error>
+      <button mat-raised-button style="background-color: #A5CB57;border-radius: 50px" class="full-width" (click)="Login()">Se connecter</button>
+    </form>
+  </mat-card>
+</div>

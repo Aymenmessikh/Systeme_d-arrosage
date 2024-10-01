@@ -1,0 +1,65 @@
+<!--<button mat-button [matMenuTriggerFor]="menu">-->
+<!--  <mat-icon>menu</mat-icon>-->
+<!--  Menu-->
+<!--</button>-->
+
+<!--<mat-menu #menu="matMenu">-->
+<!--  <button mat-menu-item>-->
+<!--    <mat-icon>home</mat-icon>-->
+<!--    <span>Home</span>-->
+<!--  </button>-->
+<!--  <button mat-menu-item>-->
+<!--    <mat-icon>info</mat-icon>-->
+<!--    <span>About</span>-->
+<!--  </button>-->
+<!--  <button mat-menu-item>-->
+<!--    <mat-icon>contact_mail</mat-icon>-->
+<!--    <span>Contact</span>-->
+<!--  </button>-->
+<!--  <button mat-menu-item>-->
+<!--    <mat-icon>settings</mat-icon>-->
+<!--    <span>Settings</span>-->
+<!--  </button>-->
+<!--</mat-menu>-->
+
+
+<!-- toolbar.component.html -->
+<mat-toolbar style="background-color:#A5CB57"  class="mat-elevation-z8">
+  <button (click)="drawer.toggle()" mat-icon-button>
+    <mat-icon style="color:white;">menu</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+  <p style="color:white;">{{currentUser.nom}} {{currentUser.prenom}}</p>
+  <img src="assets/img.png" class="user-image">
+  <button routerLink="/login" (click)="Lougout()" mat-button style="margin-right: 80px"><span style="font-size: 18px;color: white">Déconnexion</span></button>
+</mat-toolbar>
+
+<mat-drawer-container autosize>
+  <mat-drawer #drawer opened="true" mode="side" position="start" style="width: 250px">
+    <mat-nav-list>
+      <mat-list-item style="margin-bottom: 20px;height: 80px">
+        <img src="assets/img_1.png" loading="lazy" style="width: 220px;height: 70px">
+      </mat-list-item>
+      <mat-list-item routerLink="home">
+        <mat-list><mat-icon>home</mat-icon>Accueil</mat-list>
+      </mat-list-item>
+      <mat-list-item routerLink="systemes" *ngIf="role=='admin'">
+        <mat-list><mat-icon>location_city</mat-icon>systèmes</mat-list>
+      </mat-list-item>
+      <mat-list-item routerLink="mes-systemes">
+        <mat-list><mat-icon>location_city</mat-icon>Mes systèmes</mat-list>
+      </mat-list-item>
+      <mat-list-item routerLink="jardiniers" *ngIf="role=='admin'">
+        <mat-list><mat-icon>group</mat-icon>Jardiniers</mat-list>
+      </mat-list-item>
+      <mat-list-item routerLink="profile">
+        <mat-list><mat-icon>account_circle</mat-icon>Profil</mat-list>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="text-align: center;min-height: 700px;background-color: white">
+        <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

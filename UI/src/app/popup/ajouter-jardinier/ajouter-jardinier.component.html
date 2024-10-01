@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Ajouter Un Jardinier </h2>
+<mat-dialog-content >
+  <form [formGroup]="registreForm">
+    <div>
+      <mat-form-field appearance="outline" >
+        <mat-label>Nom</mat-label>
+        <input matInput type="text" [formControlName]="'nom'"/>
+        <mat-error *ngIf="registreForm.controls.nom.hasError('required')">Le nom ne doit pas être vide.</mat-error>
+      </mat-form-field >
+      <mat-form-field appearance="outline">
+        <mat-label>Prenom</mat-label>
+        <input matInput type="text" [formControlName]="'prenom'"/>
+        <mat-error *ngIf="registreForm.controls.prenom.hasError('required')">Le prenom ne doit pas être vide.</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput type="text" [formControlName]="'adresse'"/>
+        <mat-error *ngIf="registreForm.controls.adresse.hasError('required')">L'dresse ne doit pas être vide.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [formControlName]="'email'"/>
+        <mat-error *ngIf="registreForm.controls.email.hasError('required')">Email ne doit pas être vide.</mat-error>
+        <mat-error *ngIf="registreForm.controls.email.hasError('email')">Veuillez entrer une adresse email valide.</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Mote de passe</mat-label>
+        <input matInput type="password" [formControlName]="'password'" [minLength]="8"/>
+        <mat-error *ngIf="registreForm.controls.password.hasError('required')">Mot de passe ne doit pas être vide.</mat-error>
+        <mat-error *ngIf="registreForm.controls.password.hasError('minlength')">Le mot de passe doit comporter au moins 8 caractères.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Confirmer Mote de passe</mat-label>
+        <input matInput type="password" [formControlName]="'confirmePassword'" [minLength]="8"/>
+        <mat-error *ngIf="registreForm.controls.confirmePassword.hasError('required')">Confirmer Mot de passe ne doit pas être vide</mat-error>
+        <mat-error *ngIf="registreForm.controls.confirmePassword.hasError('minlength')">Confirmer Le mot de passe doit comporter au moins 8 caractères.</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="display:flex;justify-content: end">
+  <button mat-button mat-dialog-close style="background-color: #62c2ea">Annuler</button>
+  <button mat-button style="background-color: #62c2ea" (click)="createJardinier()" [disabled]="registreForm.invalid">Ajouter</button>
+</mat-dialog-actions>
